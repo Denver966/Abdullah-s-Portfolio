@@ -398,7 +398,7 @@ textarea::placeholder {
 .image {
   width: 300px;
   height: 340px;
-  border: 1px solid rgb(0, 0, 80);
+  border: 1px solid white;
   background: rgb(0, 0, 42);
   margin-top: 10px;
   border-radius: 5px;
@@ -614,3 +614,4 @@ textarea::placeholder {
     width: 60%;
   }
 }
+
