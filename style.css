@@ -570,7 +570,8 @@ textarea::placeholder {
     transition: all 1s;
     width: 300px;
     height: 200px;
-    border: 2px solid white;
+    border: 1px solid rgb(0, 0, 80);
+    background: rgb(0, 0, 42);
     border-radius: 5px;
     margin: 10px;
     padding: 15px;
@@ -614,4 +615,5 @@ textarea::placeholder {
     width: 60%;
   }
 }
+
 
