@@ -563,6 +563,10 @@ textarea::placeholder {
   .img {
     display: none;
   }
+
+  wit{
+    width: 310px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -615,5 +619,6 @@ textarea::placeholder {
     width: 60%;
   }
 }
+
 
 
