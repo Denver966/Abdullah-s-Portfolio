@@ -134,22 +134,34 @@
 
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
-    var typed = new Typed('#element', {
-      strings: ['Web Developer', 'Graphic Designer', 'Web Designer', 'Cold Email Outreacher'],
-      typeSpeed: 70,
-      loop: true
-    });
-      AOS.init();
-
-         if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/Abdullah-s-Portfolio/service-worker.js')
-      .then(reg => console.log('Service Worker registered:', reg))
-      .catch(err => console.log('Service Worker registration failed:', err));
+  // Typed.js initialization
+  var typed = new Typed('#element', {
+    strings: ['Web Developer', 'Graphic Designer', 'Web Designer', 'Cold Email Outreacher'],
+    typeSpeed: 70,
+    loop: true
   });
-}
+
+  // AOS initialization
+  AOS.init();
+
+  // Service Worker registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/Abdullah-s-Portfolio/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered successfully with scope: ', registration.scope);
+        })
+        .catch(error => {
+          console.log('Service Worker registration failed: ', error);
+        });
+    });
+  }
+</script>
+
+
   </script>
   </body>
 </html>
+
 
 
