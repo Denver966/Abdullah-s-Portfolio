@@ -10,10 +10,10 @@ const URLS_TO_CACHE = [
   './thanks.html',
   './style.css',
   './offline.html',   // Offline fallback page
-  './images/one192.png',
-  './images/two512.png',
-  './images/bg.png',
-  './images/logo.png'
+  './one192.png',
+  './two512.png',
+  './bg.png',
+  './logo.png'
 ];
 
 // INSTALL
