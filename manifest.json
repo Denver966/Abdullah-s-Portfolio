@@ -1,25 +1,25 @@
 {
   "id": "/Abdullah-s-Portfolio/",
   "name": "Abdullah's Portfolio",
-  "short_name": "Abdullah's Portfolio",
-  "start_url": "https://denver966.github.io/Abdullah-s-Portfolio/index.html",
+  "short_name": "Abdullah",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a1a1a",
   "orientation": "portrait",
-  "scope": "/Abdullah-s-Portfolio/",
+  "scope": "./",
   "dir": "ltr",
   "lang": "en",
   "related_applications": [],
   "description": "Portfolio of Abdullah - Web Developer",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/one192.png",
+      "src": "./one192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/two512.png",
+      "src": "./two512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
