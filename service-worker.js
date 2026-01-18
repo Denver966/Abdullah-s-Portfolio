@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abdullah-portfolio-cache-v3';
+const CACHE_NAME = 'abdullah-portfolio-cache-v5';
 
 const URLS_TO_CACHE = [
   './',
@@ -9,25 +9,29 @@ const URLS_TO_CACHE = [
   './services.html',
   './thanks.html',
   './style.css',
-  './script.js',
   './images/192.png',
   './images/512.png',
   './images/bg.png',
   './images/logo.png'
 ];
 
-// Install
+// INSTALL
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Caching app assets');
-        return cache.addAll(URLS_TO_CACHE);
-      })
+    caches.open(CACHE_NAME).then(async cache => {
+      console.log('Caching HTML & CSS assets');
+      for (const url of URLS_TO_CACHE) {
+        try {
+          await cache.add(url);
+        } catch (err) {
+          console.warn('Skip missing file:', url);
+        }
+      }
+    })
   );
 });
 
-// Activate
+// ACTIVATE
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -42,7 +46,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch
+// FETCH
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).catch(() => caches.match(event.request))
