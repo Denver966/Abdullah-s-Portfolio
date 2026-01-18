@@ -11,9 +11,6 @@
   "dir": "ltr",
   "lang": "en",
   "related_applications": [],
-  "launch_handler": {
-  "client_mode": "new-instance"
-},
   "description": "Portfolio of Abdullah - Web Developer",
   "icons": [
     {
