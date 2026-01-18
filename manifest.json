@@ -28,5 +28,8 @@
   "education",
   "productivity"
 ],
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "display_override": ["standalone"],
+  "display": "standalone"
+
 }
