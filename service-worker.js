@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abdullah-portfolio-cache-v8';
+const CACHE_NAME = 'abdullah-portfolio-cache-v9';
 
 const URLS_TO_CACHE = [
   '/Abdullah-s-Portfolio/',
@@ -16,20 +16,19 @@ const URLS_TO_CACHE = [
   '/Abdullah-s-Portfolio/logo.png'
 ];
 
-
 // INSTALL
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(async cache => {
-      console.log('Caching HTML, CSS & offline assets');
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
       for (const url of URLS_TO_CACHE) {
         try {
           await cache.add(url);
         } catch (err) {
-          console.warn('Skip missing file:', url);
+          console.warn('Caching failed for:', url);
         }
       }
-    })
+    })()
   );
 });
 
@@ -37,22 +36,25 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys.map(key => key !== CACHE_NAME && caches.delete(key))
-      )
+      Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
     )
   );
 });
 
-// FETCH
+// FETCH - Cache first then network
 self.addEventListener('fetch', event => {
   event.respondWith(
-    fetch(event.request)
-      .then(response => response)
-      .catch(async () => {
-        // Try cache first
-        const cachedResponse = await caches.match(event.request);
-        return cachedResponse || caches.match('./offline.html');
-      })
+    caches.match(event.request).then(cached => {
+      if (cached) return cached;
+      return fetch(event.request)
+        .then(response => {
+          // Update cache dynamically
+          if (event.request.url.startsWith('http')) {
+            caches.open(CACHE_NAME).then(cache => cache.put(event.request, response.clone()));
+          }
+          return response;
+        })
+        .catch(() => caches.match('/Abdullah-s-Portfolio/offline.html'));
+    })
   );
 });
