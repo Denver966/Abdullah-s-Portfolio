@@ -21,5 +21,12 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "categories": [
+  "portfolio",
+  "business",
+  "education",
+  "productivity"
+],
+  "prefer_related_applications": false
 }
