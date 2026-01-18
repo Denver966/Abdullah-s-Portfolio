@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abdullah-portfolio-cache-v1';
+const CACHE_NAME = 'abdullah-portfolio-cache-v2';
 const URLS_TO_CACHE = [
   '/Abdullah-s-Portfolio/index.html',
   '/Abdullah-s-Portfolio/about.html',
