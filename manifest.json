@@ -11,13 +11,13 @@
   "description": "Portfolio of Abdullah - Web Developer",
   "icons": [
     {
-        "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/512.png",
+        "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/one192.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
     
-      "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/192.png",
+      "src": "https://raw.githubusercontent.com/Denver966/Abdullah-s-Portfolio/main/two512.png",
       "sizes": "192x192",
       "type": "image/png"
     }
