@@ -8,6 +8,9 @@
   "theme_color": "#1a1a1a",
   "orientation": "portrait",
   "scope": "/Abdullah-s-Portfolio/",
+  "dir": "ltr",
+  "lang": "en",
+  "related_applications": [],
   "description": "Portfolio of Abdullah - Web Developer",
   "icons": [
     {
