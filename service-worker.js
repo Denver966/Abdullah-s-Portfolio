@@ -1,37 +1,39 @@
-const CACHE_NAME = 'abdullah-portfolio-cache-v2';
+const CACHE_NAME = 'abdullah-portfolio-cache-v3';
+
 const URLS_TO_CACHE = [
-  '/Abdullah-s-Portfolio/index.html',
-  '/Abdullah-s-Portfolio/about.html',
-  '/Abdullah-s-Portfolio/contact-us.html',
-  '/Abdullah-s-Portfolio/projects.html',
-  '/Abdullah-s-Portfolio/services.html',
-  '/Abdullah-s-Portfolio/thanks.html',
-  '/Abdullah-s-Portfolio/style.css',
-  '/Abdullah-s-Portfolio/script.js',
-  '/Abdullah-s-Portfolio/images/192.png',
-  '/Abdullah-s-Portfolio/images/512.png',
-  '/Abdullah-s-Portfolio/images/bg.png',
-  '/Abdullah-s-Portfolio/images/logo.png'
+  './',
+  './index.html',
+  './about.html',
+  './contact-us.html',
+  './projects.html',
+  './services.html',
+  './thanks.html',
+  './style.css',
+  './script.js',
+  './images/192.png',
+  './images/512.png',
+  './images/bg.png',
+  './images/logo.png'
 ];
 
-// Install event - cache assets
+// Install
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      console.log('Caching app assets');
-      return cache.addAll(URLS_TO_CACHE);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Caching app assets');
+        return cache.addAll(URLS_TO_CACHE);
+      })
   );
 });
 
-// Activate event - cleanup old caches
+// Activate
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => 
+    caches.keys().then(keys =>
       Promise.all(
         keys.map(key => {
           if (key !== CACHE_NAME) {
-            console.log('Removing old cache', key);
             return caches.delete(key);
           }
         })
@@ -40,17 +42,9 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch event - serve cached content if offline
+// Fetch
 self.addEventListener('fetch', event => {
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseClone);
-        });
-        return response;
-      })
-      .catch(() => caches.match(event.request).then(resp => resp))
+    fetch(event.request).catch(() => caches.match(event.request))
   );
 });
