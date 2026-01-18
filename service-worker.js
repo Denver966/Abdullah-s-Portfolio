@@ -1,20 +1,21 @@
 const CACHE_NAME = 'abdullah-portfolio-cache-v6';
 
 const URLS_TO_CACHE = [
-  './',
-  './index.html',
-  './about.html',
-  './contact-us.html',
-  './projects.html',
-  './services.html',
-  './thanks.html',
-  './style.css',
-  './offline.html',   // Offline fallback page
-  './one192.png',
-  './two512.png',
-  './bg.png',
-  './logo.png'
+  '/Abdullah-s-Portfolio/',
+  '/Abdullah-s-Portfolio/index.html',
+  '/Abdullah-s-Portfolio/about.html',
+  '/Abdullah-s-Portfolio/contact-us.html',
+  '/Abdullah-s-Portfolio/projects.html',
+  '/Abdullah-s-Portfolio/services.html',
+  '/Abdullah-s-Portfolio/thanks.html',
+  '/Abdullah-s-Portfolio/style.css',
+  '/Abdullah-s-Portfolio/offline.html',
+  '/Abdullah-s-Portfolio/one192.png',
+  '/Abdullah-s-Portfolio/two512.png',
+  '/Abdullah-s-Portfolio/bg.png',
+  '/Abdullah-s-Portfolio/logo.png'
 ];
+
 
 // INSTALL
 self.addEventListener('install', event => {
