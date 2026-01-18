@@ -1,4 +1,4 @@
-const CACHE_NAME = 'abdullah-portfolio-cache-v5';
+const CACHE_NAME = 'abdullah-portfolio-cache-v6';
 
 const URLS_TO_CACHE = [
   './',
@@ -9,6 +9,7 @@ const URLS_TO_CACHE = [
   './services.html',
   './thanks.html',
   './style.css',
+  './offline.html',   // Offline fallback page
   './images/192.png',
   './images/512.png',
   './images/bg.png',
@@ -19,7 +20,7 @@ const URLS_TO_CACHE = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async cache => {
-      console.log('Caching HTML & CSS assets');
+      console.log('Caching HTML, CSS & offline assets');
       for (const url of URLS_TO_CACHE) {
         try {
           await cache.add(url);
@@ -36,11 +37,7 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
+        keys.map(key => key !== CACHE_NAME && caches.delete(key))
       )
     )
   );
@@ -49,6 +46,12 @@ self.addEventListener('activate', event => {
 // FETCH
 self.addEventListener('fetch', event => {
   event.respondWith(
-    fetch(event.request).catch(() => caches.match(event.request))
+    fetch(event.request)
+      .then(response => response)
+      .catch(async () => {
+        // Try cache first
+        const cachedResponse = await caches.match(event.request);
+        return cachedResponse || caches.match('./offline.html');
+      })
   );
 });
