@@ -145,7 +145,7 @@
   AOS.init();
 
   // Service Worker registration
-  if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/Abdullah-s-Portfolio/service-worker.js')
         .then(registration => {
@@ -155,10 +155,12 @@
           console.log('Service Worker registration failed: ', error);
         });
     });
-  }
+}
+
 </script>
   </body>
 </html>
+
 
 
 
